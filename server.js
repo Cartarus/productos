@@ -14,6 +14,15 @@ cloudinary.config({
   api_secret :'o2rVuprNlY9LVBHG-0pvbxJFCMo'
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+  next();
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
@@ -25,17 +34,17 @@ app.get('/list', function (req, res) {
 });
 
 app.post('/loadImg', function (req, res) {
-  console.log("entra");
-  console.log(req.body);
+  //console.log("entra");
+//console.log(req.body);
   //res.json({text: 'Hola juank'});
-  //connection.query('INSERT INTO publicaciones  VALUES (2,"correo2","url2","desc2",20,30) ;',(err, rows, fields)=> {
+  //
+  connection.query('INSERT INTO publicaciones  VALUES (2,"correo2","url2","desc2",20,30) ;',(err, rows, fields)=> {
     // res.json(JSON.stringify(rows));
-     
-    // res.json(rows.lenth);
+  //res.json(rows.lenth);
    
-//     console.log(JSON.stringify(rows))
+    console.log(JSON.stringify(rows))
 
-  // })
+   })
 
 });
 
